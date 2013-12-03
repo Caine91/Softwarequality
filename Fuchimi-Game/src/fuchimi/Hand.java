@@ -7,5 +7,6 @@ public abstract class Hand {
 	protected abstract Boolean loseAgainst(Rock rock);
 	protected abstract Boolean loseAgainst(Paper paper);
 	protected abstract Boolean loseAgainst(Scissors scissors);
-
+	protected abstract Boolean loseAgainst(Spock spock);
+	protected abstract Boolean loseAgainst(Lizard lizard);
 }

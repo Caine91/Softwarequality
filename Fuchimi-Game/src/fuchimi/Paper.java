@@ -30,4 +30,16 @@ public class Paper extends Hand{
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	protected Boolean loseAgainst(Spock spock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected Boolean loseAgainst(Lizard lizard) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

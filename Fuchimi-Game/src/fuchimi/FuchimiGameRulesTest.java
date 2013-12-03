@@ -17,13 +17,17 @@ public static Hand toHand(int input){
 		return new Paper();
 	case 3:
 		return new Scissors();
+	case 4:
+		return new Lizard();
+	case 5:
+		return new Spock();
 	default:
 		return null;
 	}
 }
 
  public static void main(String[] args) {  
-  
+  /**
    Hand hand1 = new Rock() ; 
    Hand hand2 = new Paper() ; 
    Hand hand3 = new Scissors() ; 
@@ -38,18 +42,28 @@ public static Hand toHand(int input){
    System.out.println(hand3 + " beats " + hand1 + "? " + hand3.beats(hand1)) ; 
    System.out.println(hand3 + " beats " + hand2 + "? " + hand3.beats(hand2)) ;  
    System.out.println(hand3 + " beats " + hand3 + "? " + hand3.beats(hand3)) ; 
+   */
    
    int input_player = 1;
    while(input_player != 0){
 	   System.out.println("Enter 1 for Rock");
 	   System.out.println("Enter 2 for Paper");
 	   System.out.println("Enter 3 for Scissors");
+	   System.out.println("Enter 4 for Lizard");
+	   System.out.println("Enter 5 for Spock");
 	   System.out.println("Enter 0 to Quit");
 	   
 	   Scanner in = new Scanner(System.in);
-	   input_player = in.nextInt();
+	   try{
+		   input_player = in.nextInt();
+	   } catch (java.util.InputMismatchException e){
+		   System.err.println(e+"\n Please enter a number \n");
+		   continue;
+	   }
+	   
+	   
 	   Hand hand_player = FuchimiGameRulesTest.toHand(input_player);
-	   Hand hand_computer = FuchimiGameRulesTest.toHand((int) (Math.random() * (4-1) + 1));
+	   Hand hand_computer = FuchimiGameRulesTest.toHand((int) (Math.random() * (6-1) + 1));
 	   
 	   if(input_player == 0){
 		   System.out.println("Quit Game \n");
@@ -58,14 +72,14 @@ public static Hand toHand(int input){
 		   System.out.println("You chose "+hand_player);
 		   System.out.println("Computer chose "+hand_computer);
 		   
-		   if(hand_player.beats(hand_computer)){
+		   if(hand_player.beats(hand_computer) == null){
+			   System.out.println("Your hand "+ hand_player + " equals "+hand_computer+"\n");
+		   } else if(hand_player.beats(hand_computer)){
 			   System.out.println("You won");
 			   System.out.println("Your hand "+ hand_player + " beats "+hand_computer+"\n");
-		   } else if(hand_computer.beats(hand_player)){
+		   } else {
 			   System.out.println("You lost");
 			   System.out.println("Your hand "+ hand_player + " is beaten by "+hand_computer+"\n");
-		   } else {
-			   System.out.println("Your hand "+ hand_player + " equals "+hand_computer+"\n");
 		   }
 	   }
    }
