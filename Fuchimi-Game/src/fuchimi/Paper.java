@@ -7,9 +7,11 @@ public class Paper extends Hand{
 	}
 
 	@Override
+	
 	public Boolean beats(Hand hand) {
 		return hand.loseAgainst(this);
 	}
+
 
 	@Override
 	protected Boolean loseAgainst(Rock rock) {
